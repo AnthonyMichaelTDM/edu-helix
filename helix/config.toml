@@ -78,19 +78,20 @@ S-tab = "extend_parent_node_start"
 # make X extend line above
 X = "extend_line_above"
 
-"["."[" = "goto_prev_paragraph" # duplicate bind for [p
-"]"."]" = ["goto_next_paragraph"] # duplicate bind for ]p
-
-[keys.normal."["]
-"[" = ["extend_to_line_bounds", "goto_prev_paragraph"] # duplicate bind for [p
-j = "jump_backward"
-s = "save_selection"
-[keys.normal."]"]
-"]" = ["goto_line_start", "goto_next_paragraph"] # duplicate bind for ]p
-j = "jump_forward"
-s = "save_selection"
+# duplicate bind for [p
+"["."[" = "goto_prev_paragraph"
+"{" = "goto_prev_paragraph"
+# duplicate bind for ]p
+"]"."]" = "goto_next_paragraph"
+"}" = "goto_next_paragraph"
 
 [keys.normal]
+# duplicate bind for [p
+"["."[" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+"{" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+# duplicate bind for ]p
+"]"."]" = ["goto_line_start", "goto_next_paragraph"]
+"}" = ["goto_line_start", "goto_next_paragraph"]
 # smart tab
 tab = "move_parent_node_end"
 S-tab = "move_parent_node_start"
@@ -138,6 +139,12 @@ C-k = [
 "F1" = "command_palette"
 "F2" = "rename_symbol"
 
+# Some jump-list related bindings
+"[".j = "jump_backward"
+"[".s = "save_selection"
+"]".j = "jump_forward"
+"]".s = "save_selection"
+
 # New minor mode for various misc utilities
 [keys.normal."backspace"]
 # save
@@ -145,8 +152,8 @@ s = [":write"]
 S = [":write!"]
 # Lazygit
 g = ":sh zellij run -ci --name lazygit -- lazygit"
-# Open new terminal tab
-t = ":sh zellij action new-tab"
+# Switch to terminal tab, create it if it doesn't exist
+t = ":sh zellij action go-to-tab-name -c helix-term"
 
 [keys.normal.space]
 F = "no_op"
