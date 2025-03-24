@@ -1,0 +1,164 @@
+theme = "onedark"
+
+[editor]
+true-color = true
+line-number = "relative"
+cursorline = true
+bufferline = "multiple"
+mouse = true
+middle-click-paste = false
+insert-final-newline = true
+rulers = [80]
+end-of-line-diagnostics = "hint"
+inline-diagnostics.cursor-line = "warning"
+
+file-picker.hidden = false
+indent-guides.render = true
+
+smart-tab.enable = true
+soft-wrap.enable = true
+
+[editor.auto-save]
+focus-lost = true
+# autosave after 3 seconds
+after-delay.enable = true
+after-delay.timeout = 3000
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.lsp]
+display-progress-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "diagnostics",
+  "spacer",
+  "version-control"
+]
+center = [
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator"
+]
+right = [
+  "register",
+  "selections",
+  "position",
+  "position-percentage",
+  "file-encoding",
+  "file-line-ending",
+  "file-type"
+]
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+nbsp = "all"
+nnbsp = "all"
+newline = "none"
+
+[keys.insert]
+# comments
+"C-/" = "toggle_comments"
+# smart tab
+S-tab = "move_parent_node_start"
+
+[keys.select]
+# comments
+"C-/" = "toggle_comments"
+# smart tab
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
+# make X extend line above
+X = "extend_line_above"
+
+"["."[" = "goto_prev_paragraph" # duplicate bind for [p
+"]"."]" = ["goto_next_paragraph"] # duplicate bind for ]p
+
+[keys.normal."["]
+"[" = ["extend_to_line_bounds", "goto_prev_paragraph"] # duplicate bind for [p
+j = "jump_backward"
+s = "save_selection"
+[keys.normal."]"]
+"]" = ["goto_line_start", "goto_next_paragraph"] # duplicate bind for ]p
+j = "jump_forward"
+s = "save_selection"
+
+[keys.normal]
+# smart tab
+tab = "move_parent_node_end"
+S-tab = "move_parent_node_start"
+# comments
+"C-/" = "toggle_comments"
+# close file
+C-w = ":buffer-close"
+# delete the selected line(s). This is from vscode,
+# but might be an anti-pattern since `@xd` does the same thing, effectively
+S-del = [
+  "ensure_selections_forward",
+  "extend_to_line_bounds",
+  "extend_char_right",
+  "extend_char_left",
+  "delete_selection"
+]
+# make X extend line above (makes more sense then existing binding)
+X = "extend_line_above"
+
+# Move lines up/down.
+# Ideally these would by A-j/k but those conflict with Zellij's keybinds
+C-j = [
+  "ensure_selections_forward",
+  "extend_to_line_bounds",
+  "extend_char_right",
+  "extend_char_left",
+  "delete_selection",
+  "add_newline_below",
+  "move_line_down",
+  "replace_with_yanked"
+]
+C-k = [
+  "ensure_selections_forward",
+  "extend_to_line_bounds",
+  "extend_char_right",
+  "extend_char_left",
+  "delete_selection",
+  "move_line_up",
+  "add_newline_above",
+  "move_line_up",
+  "replace_with_yanked"
+]
+
+# function row (from vscode)
+"F1" = "command_palette"
+"F2" = "rename_symbol"
+
+# New minor mode for various misc utilities
+[keys.normal."backspace"]
+# save
+s = [":write"]
+S = [":write!"]
+# Lazygit
+g = ":sh zellij run -ci --name lazygit -- lazygit"
+# Open new terminal tab
+t = ":sh zellij action new-tab"
+
+[keys.normal.space]
+F = "no_op"
+C = "no_op"
+A-c = "no_op"
+# consolidate comment stuff into sub-mode
+[keys.normal.space.c]
+c = "toggle_comments"
+C = "toggle_block_comments"
+A-c = "toggle_line_comments"
+# Consolidate file picker stuff into sub-mode
+[keys.normal.space.f]
+f = "file_picker"
+F = "file_picker_in_current_directory"
+o = "file_picker_in_current_buffer_directory"
