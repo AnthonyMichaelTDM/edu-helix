@@ -11,6 +11,7 @@ insert-final-newline = true
 rulers = [80]
 end-of-line-diagnostics = "hint"
 inline-diagnostics.cursor-line = "warning"
+inline-diagnostics.other-lines = "error"
 
 file-picker.hidden = false
 indent-guides.render = true
@@ -55,6 +56,10 @@ right = [
   "file-line-ending",
   "file-type"
 ]
+
+[editor.terminal]
+command = "zellij"
+args = ["action", "new-pane", "-d", "down", "-cs", "-n", "debug", "--"]
 
 [editor.whitespace.render]
 space = "none"
