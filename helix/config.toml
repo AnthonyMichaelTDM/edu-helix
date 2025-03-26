@@ -159,6 +159,9 @@ S = [":write!"]
 g = ":sh zellij run -ci --name lazygit -- lazygit"
 # Switch to terminal tab, create it if it doesn't exist
 t = ":sh zellij action go-to-tab-name -c helix-term"
+# file picker
+f = ":sh zellij run -n Explorer -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/scripts/picker.sh open $(pwd)"
+
 
 [keys.normal.space]
 F = "no_op"
