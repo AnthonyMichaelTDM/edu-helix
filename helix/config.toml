@@ -117,8 +117,7 @@ S-del = [
 X = "extend_line_above"
 
 # Move lines up/down.
-# Ideally these would by A-j/k but those conflict with Zellij's keybinds
-C-j = [
+A-j = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
   "extend_char_right",
@@ -128,7 +127,7 @@ C-j = [
   "move_line_down",
   "replace_with_yanked"
 ]
-C-k = [
+A-k = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
   "extend_char_right",
