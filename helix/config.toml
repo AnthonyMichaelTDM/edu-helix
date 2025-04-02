@@ -90,6 +90,15 @@ X = "extend_line_above"
 "]"."]" = "goto_next_paragraph"
 "}" = "goto_next_paragraph"
 
+[keys.select.space]
+C = "no_op"
+A-c = "no_op"
+# consolidate comment stuff into sub-mode
+[keys.select.space.c]
+c = "toggle_comments"
+C = "toggle_block_comments"
+A-c = "toggle_line_comments"
+
 [keys.normal]
 # duplicate bind for [p
 "["."[" = ["extend_to_line_bounds", "goto_prev_paragraph"]
