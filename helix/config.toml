@@ -126,6 +126,7 @@ S-del = [
 X = "extend_line_above"
 
 # Move lines up/down.
+A-down = "@<A-j>"
 A-j = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
@@ -136,6 +137,7 @@ A-j = [
   "move_line_down",
   "replace_with_yanked"
 ]
+A-up = "@<A-k>"
 A-k = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
