@@ -82,6 +82,30 @@ tab = "extend_parent_node_end"
 S-tab = "extend_parent_node_start"
 # make X extend line above
 X = "extend_line_above"
+# Move lines up/down.
+A-down = "@<A-j>"
+A-j = [
+  "ensure_selections_forward",
+  "extend_to_line_bounds",
+  "extend_char_right",
+  "extend_char_left",
+  "delete_selection",
+  "add_newline_below",
+  "move_line_down",
+  "replace_with_yanked"
+]
+A-up = "@<A-k>"
+A-k = [
+  "ensure_selections_forward",
+  "extend_to_line_bounds",
+  "extend_char_right",
+  "extend_char_left",
+  "delete_selection",
+  "move_line_up",
+  "add_newline_above",
+  "move_line_up",
+  "replace_with_yanked"
+]
 
 # duplicate bind for [p
 "["."[" = "goto_prev_paragraph"
